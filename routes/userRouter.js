@@ -20,7 +20,6 @@ router
           type: "Point",
           coordinates: req.body.location.coordinates,
         },
-        coldChainNeeded: req.body.coldChainNeeded,
       });
       return res.status(101).json({ message: `donation created`, donation });
     } catch (err) {
@@ -42,6 +41,10 @@ router
 
       donation.status = "MATCHED";
       donation.receiver = req.user._id;
+      donation.deliveryLocation = {
+        type: "Point",
+        coordinates: req.body.deliveryLocation.coordinates,
+      };
       await donation.save();
       //Details
       await createAuditLog({

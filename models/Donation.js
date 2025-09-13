@@ -15,11 +15,18 @@ const donationSchema = new mongoose.Schema(
       type: { type: String, enum: ["Point"], default: "Point" },
       coordinates: { type: [Number], required: true },
     },
-    coldChainNeeded: { type: Boolean, default: false },
     status: {
       type: String,
       enum: ["LISTED", "MATCHED", "PICKED", "DELIVERED"],
       default: "LISTED",
+    },
+    deliveryLocation: {
+      type: {
+        type: String,
+        enum: ["Point"],
+        default: "Point",
+      },
+      coordinates: { type: [Number] },
     },
     receiver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     driver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
