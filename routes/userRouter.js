@@ -1,5 +1,5 @@
 const express = require("express");
-const users = require("../models/User");
+//const users = require("../models/User");
 const { Donation } = require("../models/Donation");
 const createAuditLog = require("../helper/auditLog");
 //const jwt = require("jsonwebtoken");
