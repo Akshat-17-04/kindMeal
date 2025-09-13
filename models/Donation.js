@@ -18,10 +18,14 @@ const donationSchema = new mongoose.Schema(
     coldChainNeeded: { type: Boolean, default: false },
     status: {
       type: String,
-      enum: ["LISTED", "MATCHED", "PICKED", "DELIVERED", "CANCELLED"],
+      enum: ["LISTED", "MATCHED", "PICKED", "DELIVERED"],
       default: "LISTED",
     },
+    receiver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    driver: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    deliveredAt: { type: Date },
   },
+
   { timestamps: true }
 );
 
